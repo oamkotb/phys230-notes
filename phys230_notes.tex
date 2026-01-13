@@ -1,0 +1,222 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{setspace}
+\usepackage{siunitx}
+\usepackage{hyperref}
+
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\graphicspath{{imgs/}}
+
+\setstretch{1.1}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+\section{Electrostatics}
+
+\subsection{Electric Field}
+
+\subsubsection{Introduction}
+
+The fundamental problem that electrodynamics seeks to answer is the following:
+given a collection of electric charges \( q_1, q_2, q_3, \ldots \) (the \textit{source charges}), what force do they exert on another charge \( Q \) (the \textit{test charge})?
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.55\textwidth]{source_test_charges.png}
+    \caption{Source charges exerting a force on a test charge.}
+    \vspace{-0.5em}
+\end{figure}
+
+\textbf{Electrostatics:} Charges are \underline{at rest} relative to one another.
+
+\textbf{Electrodynamics:} Charges are \underline{in motion} relative to one another.
+
+\vspace{0.3em}
+
+These problems are solvable due to the \textbf{principle of superposition}, which states that the \underline{interaction between any two charges is unaffected by the presence of other charges}. As a result, we can calculate the force due to each source charge independently and then add the results:
+
+\[
+    \vb{F} = \vb{F}_1 + \vb{F}_2 + \cdots
+\]
+
+While this principle simplifies the physics conceptually, real problems may still be complex because the positions, velocities, and accelerations of charges (both present and past) can matter. To build intuition, we begin with electrostatics.
+
+\hrulefill
+
+\subsubsection{Coulomb's Law}
+
+The force on a test charge \( Q \) due to a single point charge \( q \), at rest and separated by a distance \( r \), is given by \textbf{Coulomb’s Law}:
+
+\[
+\boxed{
+    \vb{F} = \frac{1}{4\pi\varepsilon_0}
+    \frac{qQ}{r^2}\,\hat{\vb{r}}
+}
+\]
+
+Here, \( \varepsilon_0 \) is the \textbf{permittivity of free space}:
+
+\[
+    \varepsilon_0 = \qty{8.85e-12}{\coulomb^2\per\newton\meter^2}
+\]
+
+It is often convenient to define the constant
+
+\[
+    k = \frac{1}{4\pi\varepsilon_0}
+      = \qty{9.0e9}{\newton\meter^2\per\coulomb^2}
+\]
+
+so Coulomb’s Law can be written more compactly as
+
+\[
+\boxed{
+    \vb{F} = k\frac{qQ}{r^2}\,\hat{\vb{r}}
+}
+\]
+
+\hrulefill
+
+\subsubsection{The Electric Field}
+
+The \textbf{electric field} \( \vb{E} \) is a vector quantity defined at every point in space and depends on the configuration of source charges. Conceptually, it represents an entity that fills space around charges: when a test charge is placed at a given point, the electric field at that point determines the force it experiences.
+
+If multiple point charges are present, the total force on a test charge \( Q \) is
+
+\[
+    \vb{F}
+    = \vb{F}_1 + \vb{F}_2 + \cdots
+    = k\left(
+        \frac{q_1 Q}{r_{1Q}^2}\hat{\vb{r}}_{1Q}
+      + \frac{q_2 Q}{r_{2Q}^2}\hat{\vb{r}}_{2Q}
+      + \cdots
+    \right)
+\]
+
+Factoring out \( Q \),
+
+\[
+    \vb{F} = Q\,\vb{E}
+\]
+
+where the electric field is defined as
+
+\[
+\boxed{
+    \vb{E}(\vb{r})
+    = k \sum_{i=1}^{n}
+      \frac{q_i}{r_{iQ}^2}\,\hat{\vb{r}}_{iQ}
+}
+\]
+
+Note that the electric field depends only on the source charges and the observation point, not on the test charge itself.
+
+\subsubsection{Charge Distributions}
+
+If the charge is distributed continuously over some region, the sum becomes an integral:
+\[
+\boxed{
+    \vectorbold{E(r)} = k\int\frac{1}{r^2_{qQ}}\vectorunit{r}_{qQ}\dd{q}
+}
+\]
+In many physical situations, charge is distributed continuously rather than concentrated at a point. Such configurations are described using a \textbf{charge density}.
+
+\begin{enumerate}
+
+\item \textbf{Linear Charge Distribution}
+
+Charge is distributed along a one-dimensional object (e.g., a thin wire) and is described by the \textbf{linear charge density}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.40\textwidth]{linear_distribution.png}
+    \vspace{-0.5em}
+\end{figure}
+
+\[
+\boxed{
+    \lambda \equiv \dv{q}{\ell}
+    \qquad \left[\si{\coulomb\per\meter}\right]
+}
+\]
+
+For an infinitesimal segment of length \( \dd{\ell} \),
+\[
+    \dd{q} = \lambda\,\dd{\ell}
+\]
+
+\item \textbf{Surface Charge Distribution}
+
+Charge is distributed over a two-dimensional surface and is described by the \textbf{surface charge density}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\textwidth]{surface_distribution.png}
+    \vspace{-0.5em}
+\end{figure}
+\[
+\boxed{
+    \sigma \equiv \dv{q}{A}
+    \qquad \left[\si{\coulomb\per\meter\squared}\right]
+}
+\]
+
+For an infinitesimal surface element \( \dd{A} \),
+\[
+    \dd{q} = \sigma\,\dd{A}
+\]
+
+\item \textbf{Volume Charge Distribution}
+
+Charge is distributed throughout a three-dimensional region and is described by the \textbf{volume charge density}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.15\textwidth]{volume_distribution.png}
+    \vspace{-0.5em}
+\end{figure}
+
+\[
+\boxed{
+    \rho \equiv \dv{q}{V}
+    \qquad \left[\si{\coulomb\per\meter\cubed}\right]
+}
+\]
+
+For an infinitesimal volume element \( \dd{V} \),
+\[
+    \dd{q} = \rho\,\dd{V}
+\]
+
+\end{enumerate}
+
+\textbf{Average Charge Density}
+
+In cases where the charge distribution is not uniform or when only the total charge over a finite region is known, it is useful to define an \textbf{average charge density}.
+
+\[
+\boxed{
+    \bar\lambda = \frac{q}{L}
+    \qquad
+    \bar\sigma = \frac{q}{A}
+    \qquad
+    \bar\rho = \frac{q}{V}
+}
+\]
+
+where:
+\begin{itemize}
+    \item \( q \) is the total charge,
+    \item \( L \) is the total length,
+    \item \( A \) is the total surface area,
+    \item \( V \) is the total volume.
+\end{itemize}
+
+If there is uniform charge distribution, the charge density at any location is equivalent to the average charge density ($\rho = \bar\rho$).
+\end{document}
