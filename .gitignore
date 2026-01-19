@@ -1,0 +1,5 @@
+*.fls
+*.aux
+*.log
+*.out
+*.gz
