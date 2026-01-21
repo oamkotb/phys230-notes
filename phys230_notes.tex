@@ -236,115 +236,146 @@ The rest of electrostatics is assembling tools and tricks to avoid the involved 
 
 The magnitude of the field is indicated by the density of the field lines: it's stronger near the center point charge where the field lines are closer together. Field lines never intersect, because E has a unique dierction at each point. In terms of direction of the arrows, \uline{field lines begin on positive charges and end on negative ones}. Field lines also cannot terminate in midair, though they may extend out to infinity.
 
+For a given (arbitrary) density of electric field lines, the \textbf{flux} of the electric field $\vb{E}$ through a surface $\mathcal{S}$ is proportional to the number of field lines passing through the surface. This follows because the field strength is proportional to the density of field lines (the number per unit area). Hence, $\vb{E} \cdot \dd{\vb{A}}$ is proportional to the number of field lines passing through the infinitesimal area $\dd{\vb{A}}$. The dot product selects the component of $\vb{E}$ perpendicular to the surface:
+\[
+    \Phi_{\vb{E}} \equiv \int_{\mathcal{S}} \vb{E} \cdot \dd{\vb{A}}
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{flux_on_s.png}
+    \caption{Flux is proportional to the number of electric field lines passing through a surface.}
+    \vspace{-0.5em}
+\end{figure}
+
+Since only the component of $\vb{E}$ perpendicular to the surface contributes to the flux, we may write (for a field of constant magnitude over the surface)
+\[
+    \Phi_{\vb{E}} = E \int_{\mathcal{S}} \cos\theta \, \dd{A}
+\]
+where $\theta$ is the angle between $\vb{E}$ and the area vector $\dd{\vb{A}}$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{ortho_to_e_flux.png}
+    \caption{Angle between $\vb{E}$ and the surface element $\dd{\vb{A}}$.}
+    \vspace{-0.5em}
+\end{figure}
+
 \hrulefill
 
 \section{Potentials}
 \subsection{Electric Dipoles}
-Dipoles are a pair of point charges with:
+
+An electric dipole consists of a pair of point charges with:
 \begin{itemize}
-	\item \textbf{equal} magnitude of charge $q$
-	\item \textbf{opposite} signs
-	\item seperated by distance $d$
+	\item equal magnitude of charge $q$,
+	\item opposite signs,
+	\item separated by a distance $d$.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2\textwidth]{dipoles.png}
-    \caption{Diagram of a dipole.}
+    \caption{Diagram of an electric dipole.}
     \vspace{-0.5em}
 \end{figure}
 
-Dipoles are defined by the \uline{dipole moment vector}
+An electric dipole is defined by the \uline{dipole moment vector}
 \[
 \boxed{
-    \vb{p} = q \vb{r}_{-+} \left[\si{\coulomb\meter}\right]
+    \vb{p} = q \vb{r}_{-+}
 }
 \]
 where
 \[
-    \vb{r}_{-+} = \vb{r}_{-} - \vb{r}_{+}
+    \vb{r}_{-+} = \vb{r}_{-} - \vb{r}_{+}, \qquad
+    d = |\vb{r}_{-+}|.
 \]
+The magnitude of the dipole moment is therefore
 \[
-    d = |\vb{r}_{-+}|
+    p = qd.
 \]
-The magnitude of $\vb{p}$ can be found using the charge and distance
-\[
-    p = qd
-\]
-Dipole moments are vectors, and they add accordingly: if you have two dipoles, $\vb{p}_1$ and $\vb{p}_2$, the total dipole moment is $\vb{p}_1 + \vb{p}_2$. \textbf{Hint:} We can use this in the future to combine close charges and treat them as dipoles, simplifying out math.
 
-Even though it is overall neutral, a water molecule's chemical bonds cause a displacement of charge. This forms a negative charge of the oxygen end, and a positive charge on the hydrogen, forming an electric dipole!
+Dipole moments are vectors and therefore add vectorially. If two dipoles have moments $\vb{p}_1$ and $\vb{p}_2$, the total dipole moment is $\vb{p}_1 + \vb{p}_2$. This allows closely spaced charges to be approximated as dipoles, simplifying calculations.
+
+Although a water molecule is electrically neutral overall, the arrangement of its chemical bonds causes a displacement of charge. This results in a partial negative charge near the oxygen atom and partial positive charges near the hydrogen atoms, forming an electric dipole.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{h2o_dipole.png}
-    \caption{O-H bonds in water form dipoles.}
+    \caption{O--H bonds in a water molecule form an electric dipole.}
     \vspace{-0.5em}
 \end{figure}
 
 \subsubsection{Forces and Torque on Electric Dipoles}
-Force $\vb{F}_{+}$ and $\vb{F}_{-}$ are not in the same direction which creates \textbf{torque}.
+
+The forces $\vb{F}_{+}$ and $\vb{F}_{-}$ acting on the charges of a dipole in an external electric field are equal in magnitude and opposite in direction, but they do not act along the same line. As a result, the net force on the dipole is zero (in a uniform field), but a \textbf{torque} acts on the dipole.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{dipole_in_field.png}
-    \caption{The net force on the electric dipole is zero, but there is a torque directed into the page.}
+    \caption{The net force on an electric dipole in a uniform field is zero, but a torque acts to rotate the dipole.}
     \vspace{-0.5em}
 \end{figure}
 
-According to the torque formula:
+Using the definition of torque,
 \begin{align*}
   \boldsymbol{\tau}
-  &= \boldsymbol{\tau}_{+} + \boldsymbol{\tau}_{-}\\
-  &= \vb{r}_{+} \cross \vb{F}_{+} + \vb{r}_{-} \cross \vb{F}_{-}\\
-  &= \vb{r}_{+} \cross q\vb{E} + \vb{r}_{-} \cross (-q)\vb{E}\\
-  &= q\vb{r}_{-+} \cross \vb{E}
+  &= \boldsymbol{\tau}_{+} + \boldsymbol{\tau}_{-} \\
+  &= \vb{r}_{+} \times \vb{F}_{+} + \vb{r}_{-} \times \vb{F}_{-} \\
+  &= \vb{r}_{+} \times q\vb{E} + \vb{r}_{-} \times (-q)\vb{E} \\
+  &= q(\vb{r}_{-} - \vb{r}_{+}) \times \vb{E} \\
+  &= \vb{p} \times \vb{E}.
 \end{align*}
+
+Thus,
 \[
 \boxed{
-    \boldsymbol{\tau} = \vb{p} \cross \vb{E} \left[\si{\newton\meter}\right]
+    \boldsymbol{\tau} = \vb{p} \times \vb{E}
 }
 \]
 
 The magnitude of the torque is
-\begin{align*}
-    \abs{\boldsymbol{\tau}} &= \abs{\vb{p} \cross \vb{E}}\\
-    &= pE\sin({\phi_{p,E}})\\
-    &= qd\sin({\phi_{p,E}})
-\end{align*}
+\[
+    |\boldsymbol{\tau}| = pE \sin\phi,
+\]
+where $\phi$ is the angle between $\vb{p}$ and $\vb{E}$.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{dipole_torque_rhr.png}
-    \caption{The direction of $\boldsymbol{\tau}$ is found using the right-hand rule.}
+    \caption{The direction of $\boldsymbol{\tau}$ is determined using the right-hand rule.}
     \vspace{-0.5em}
 \end{figure}
 
 \subsubsection{Potential Energy of Electric Dipoles}
-The potential energy of a dipole with moment $\vb{p}$ placed in an external field $\vb{E}$, is the negative of the work done by $\vb{E}$ on the dipole ($\dd{U} = -\dd{W}$). Therefore to find the potential energy of the dipole we need to find the work done by $\vb{E}$.
 
+The potential energy of a dipole with moment $\vb{p}$ placed in a uniform external electric field $\vb{E}$ is defined as the negative of the work done by the field on the dipole:
+\[
+    \dd{U} = -\dd{W}.
+\]
+
+The infinitesimal work done by the electric field is
 \begin{align*}
-    \dd{\vb{W}}
-    &= \dd{\vb{W}_+} + \dd{\vb{W}_-} \\
-    &= \vb{F}_+ \cdot \dd{\vb{r}_+} + \vb{F}_- \cdot \dd{\vb{r}_-} \\
-    &= q \vb{E} \cdot \dd{\vb{r}_+} + (-q)\vb{E} \cdot \dd{\vb{r}_-} \\
-    &= q \vb{E} \cdot \left( \dd{\vb{r}_+} - \dd{\vb{r}_-} \right)
+    \dd{W}
+    &= \dd{W}_{+} + \dd{W}_{-} \\
+    &= \vb{F}_{+} \cdot \dd{\vb{r}}_{+} + \vb{F}_{-} \cdot \dd{\vb{r}}_{-} \\
+    &= q\vb{E} \cdot \dd{\vb{r}}_{+} - q\vb{E} \cdot \dd{\vb{r}}_{-} \\
+    &= q\vb{E} \cdot (\dd{\vb{r}}_{+} - \dd{\vb{r}}_{-}).
 \end{align*}
 
-For an infinitesimal $\dd{\vb{r}}$, we can assume $\vb{E}$ is constant, hence
+Assuming $\vb{E}$ is constant,
 \begin{align*}
     W
-    = \int\dd{\vb{W}}
-    &= q \vb{E} \cdot \int \left( \dd{\vb{r}_+} - \dd{\vb{r}_-} \right)\\
-    &= q \vb{E} \cdot \left(\vb{r}_+ - \vb{r}_-\right)\\
-    &= q \vb{E} \cdot \vb{r}_{-+}\\
-    &= \vb{p} \cdot \vb{E}
+    &= q\vb{E} \cdot (\vb{r}_{+} - \vb{r}_{-}) \\
+    &= q\vb{E} \cdot \vb{r}_{-+} \\
+    &= \vb{p} \cdot \vb{E}.
 \end{align*}
 
-Therefore
+Therefore, the potential energy of the electric dipole is
 \[
 \boxed{
-    U = -\vb{p} \cdot \vb{E}
+    U = -\vb{p} \cdot \vb{E}.
 }
 \]
 \end{document}
