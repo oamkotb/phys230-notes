@@ -261,6 +261,63 @@ where $\theta$ is the angle between $\vb{E}$ and the area vector $\dd{\vb{A}}$.
     \vspace{-0.5em}
 \end{figure}
 
+The electric flux through any closed surface reflects the total charge contained inside the surface. This is because electric field lines due to charges \emph{outside} the surface pass into and out of it in equal amounts, giving no net contribution. Only field lines that originate from positive charges inside the surface or terminate on negative charges inside the surface contribute to a net flux. This is the essence of \textbf{Gauss's Law}.
+
+To derive a quantitative explanation, consider a point charge $q$ located at the origin. The electric field produced by the charge is
+\[
+    \vb{E} = \frac{1}{4\pi\epsilon_0} \frac{q}{r^2} \vu{r}.
+\]
+
+The electric flux through a spherical surface of radius $r$ centered on the charge is
+\[
+    \Phi_{\vb{E}} = \oint \vb{E} \cdot \dd{\vb{a}}
+    = \int \frac{1}{4\pi\epsilon_0} \left( \frac{q}{r^2} \vu{r} \right)
+    \cdot \left( r^2 \sin\theta \dd{\theta} \dd{\phi} \, \vu{r} \right).
+\]
+
+Since $\vu{r} \cdot \vu{r} = 1$, this simplifies to
+\[
+    \Phi_{\vb{E}} = \frac{q}{4\pi\epsilon_0}
+    \int_0^{2\pi} \int_0^\pi \sin\theta \dd{\theta} \dd{\phi}
+    = \frac{q}{4\pi\epsilon_0} (4\pi)
+    = \frac{q}{\epsilon_0}.
+\]
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{charge_in_sphere.png}
+    \caption{Point charge $q$ at the origin within an enclosed surface.}
+    \vspace{-0.5em}
+\end{figure}
+
+Notice that as the surface area increases as $r^2$, the magnitude of the electric field decreases as $1/r^2$. In terms of field lines, this means that the same number of field lines pass through any spherical surface enclosing the charge. Consequently, \emph{the flux through any closed surface enclosing the charge is} $\displaystyle \frac{q}{\epsilon_0}$, independent of the size or shape of the surface.
+
+Now consider a collection of $n$ point charges enclosed by a closed surface. By the principle of superposition, the total electric field is
+\[
+    \vb{E} = \sum_{i=1}^{n} \vb{E}_i.
+\]
+
+The total flux through the surface is therefore
+\[
+    \oint \vb{E} \cdot \dd{\vb{a}}
+    = \sum_{i=1}^{n} \oint \vb{E}_i \cdot \dd{\vb{a}}
+    = \sum_{i=1}^{n} \frac{q_i}{\epsilon_0}
+    = \frac{Q_{\text{enc}}}{\epsilon_0}.
+\]
+
+Thus, for \emph{any} closed surface,
+\[
+\boxed{
+    \oint \vb{E} \cdot \dd{\vb{a}} = \frac{Q_{\text{enc}}}{\epsilon_0}
+}
+\]
+
+This is \textbf{Gauss’s Law}. It can be used in three primary ways:
+\begin{enumerate}
+    \item If the enclosed charge $Q_{\text{enc}}$ is known, the electric flux can be found directly.
+    \item If $Q_{\text{enc}}$ is known and sufficient symmetry exists, the electric field $\vb{E}$ can be determined.
+    \item If the electric field $\vb{E}$ is known, the enclosed charge can be found by integration.
+\end{enumerate}
 \hrulefill
 
 \section{Potentials}
