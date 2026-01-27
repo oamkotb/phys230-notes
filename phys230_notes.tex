@@ -2,6 +2,7 @@
 
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amssymb}
+\usepackage{enumerate}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -318,6 +319,114 @@ This is \textbf{Gauss’s Law}. It can be used in three primary ways:
     \item If $Q_{\text{enc}}$ is known and sufficient symmetry exists, the electric field $\vb{E}$ can be determined.
     \item If the electric field $\vb{E}$ is known, the enclosed charge can be found by integration.
 \end{enumerate}
+
+\hrulefill
+
+\subsection{Work and Energy in Electrostatics}
+\subsubsection{The Work it Takes to Move a Charge}
+If you wanted to move a test charge $Q$ from point $\vb{a}$ to point $\vb{b}$, how much work will you have to do?
+\[
+    W = \int^{\vb{a}}_{\vb{b}} \vb{F} \cdot \dd{\vb{l}}
+\]
+Since the electric force of $Q$ is $\vb{F} = Q\vb{E}$, the force you must exert, in opposition to the electric force, is $-Q\vb{E}$. Therefore
+\[
+    W = -Q \int^{\vb{a}}_{\vb{b}} \vb{E} \cdot \dd{\vb{l}} = Q[V(\vb{b}) - V(\vb{a})]
+\]
+Dividing through $Q$ we have
+\[
+    V(\vb{b}) - V(\vb{a}) = \frac{W}{Q}
+\]
+In words, \textit{the potential difference between points $\vb{a}$ and $\vb{b}$ is equal to the work per unit charge required to carry a particle from a to b.} If you set the reference point to infinity, you see that \textit{potential} is potential energy \textit{per unit charge}.
+\[
+    W = Q[V(\vb{r} - V(\infty)] = QV(\vb{r})
+\]
+
+\hrulefill
+
+\subsection{Conductors}
+
+\subsubsection{Basic Properties}
+In an insulator, each electron is on a short leash, attached to a particular atom. However, in a metallic conductor one or more electrons per atom are free to roam. An ideal conductor is defined to have an unlimited supply of free charges. From this definition, the basic electrostatic properties of ideal conductors are:
+\begin{enumerate}
+	\item $\vb{E} = 0$ \textbf{inside a conductor}, because free charges (electrons) immediately move in response to any field, rearranging themselves on the surface to create an opposing, equal internal field, neutralizing it.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{E_is_zero.png}
+        \caption{The electric field created by the moved charges opposes the external electric field.}
+        \vspace{-0.5em}
+    \end{figure}
+
+	\item $\rho = 0$ \textbf{inside a conductor}. This follows from the differential form of \textbf{Gauss' law},
+	\[
+	\nabla \cdot \vb{E} = \frac{\rho}{\epsilon_0}.
+	\]
+	If $\vb{E}=0$, then $\rho=0$. There is still charge present, but the \textit{net} volume charge density is zero.
+
+	\item \textbf{Any net charge resides on the surface of a conductor.}
+
+	\item \textbf{A conductor is equipotential.} For any two points on a conductor, the electric potential $V$ is the same everywhere.
+
+	\item \textbf{The electric field is perpendicular to the surface, just outside a conductor.}
+\end{enumerate}
+
+\subsubsection{Induced Charges}
+If you hold a $+q$ charge near an uncharged conductor, the two will attract. This occurs because the positive charge pulls negative charges to the nearer surface of the conductor, inducing a charge separation. Since opposite charges attract, the net force is attractive.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{conductor_charge_attraction.png}
+    \caption{$+q$ inducing charge on a nearby conductor.}
+    \vspace{-0.5em}
+\end{figure}
+
+If instead a $+q$ charge is placed inside a cavity within a conductor, the conductor rearranges its surface charges so that the electric field inside the conducting material remains zero.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{conductor_isolates_charge.png}
+    \caption{$+q$ inside a cavity of a conductor.}
+    \vspace{-0.5em}
+\end{figure}
+
+As a result, no electric field from the internal charge leaks outside the conductor, and no external electric fields penetrate the conductor. The conductor effectively isolates regions of space from one another.
+
+\subsubsection{Surface Charge}
+Since charge cannot exist in the bulk of a conductor, any excess charge must reside on the surface. We describe this using the \textbf{surface charge density}
+\[
+\sigma = \frac{dq}{dA}.
+\]
+
+Just outside the surface of a conductor, the electric field has two important properties:
+\begin{enumerate}
+	\item \textbf{The electric field is perpendicular to the surface.}
+	If there were a tangential component of $\vb{E}$, it would exert a force on free electrons along the surface, causing them to move. Since conductors in electrostatic equilibrium have no surface currents, the tangential component must be zero.
+
+	\item \textbf{The magnitude of the electric field just outside the surface is}
+	\[
+	E = \frac{\sigma}{\epsilon_0}.
+	\]
+\end{enumerate}
+
+This result follows directly from \textbf{Gauss’ law}. Consider a thin cylindrical Gaussian ``pillbox'' that straddles the surface of the conductor. The electric field inside the conductor is zero, and the field is perpendicular to the surface, so there is no flux through the curved side of the pillbox. Gauss’ law gives
+\[
+\oint \vb{E}\cdot d\vb{A} = EA = \frac{q_{\text{enc}}}{\epsilon_0}
+= \frac{\sigma A}{\epsilon_0}.
+\]
+Canceling the area $A$ yields
+\[
+E = \frac{\sigma}{\epsilon_0}.
+\]
+
+Thus, the surface charge density directly determines the strength of the electric field just outside a conductor.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{surface_charge.png}
+    \caption{The field just outside a charged conductor is perpendicular to the surface.}
+    \vspace{-0.5em}
+\end{figure}
+
 \hrulefill
 
 \section{Potentials}
