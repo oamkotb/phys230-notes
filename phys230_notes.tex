@@ -60,8 +60,13 @@ The force on a test charge \( Q \) due to a single point charge \( q \), at rest
 \[
 \boxed{
     \vb{F} = \frac{1}{4\pi\varepsilon_0}
-    \frac{qQ}{r^2}\,\hat{\vb{r}}
+    \frac{qQ}{r_{qQ}^2}\,\hat{\vb{r_{qQ}}}
 }
+\]
+
+Recall that
+\[
+    \vu{r_{qQ}} = \vb{r_{Q}} - \vb{r_{q}}
 \]
 
 Here, \( \varepsilon_0 \) is the \textbf{permittivity of free space}:
@@ -81,7 +86,7 @@ so Coulomb’s Law can be written more compactly as
 
 \[
 \boxed{
-    \vb{F} = k\frac{qQ}{r^2}\,\hat{\vb{r}}
+    \vb{F} = k\frac{qQ}{r_{qQ}^2}\,\hat{\vb{r_{qQ}}}
 }
 \]
 
@@ -117,7 +122,13 @@ where the electric field is defined as
 }
 \]
 
-Note that the electric field depends only on the source charges and the observation point, not on the test charge itself.
+Note that the electric field depends only on the source charges and the observation point, not on the test charge itself. To calculate the electric field of a single source charge at point $p$, one can use
+\[
+\boxed{
+    \vb{E_{qp}}
+    = k \frac{q}{r_{qp}^2}\,\hat{\vb{r}}_{qp}
+}
+\]
 
 \subsubsection{Charge Distributions}
 
@@ -269,9 +280,25 @@ To derive a quantitative explanation, consider a point charge $q$ located at the
     \vb{E} = \frac{1}{4\pi\epsilon_0} \frac{q}{r^2} \vu{r}.
 \]
 
+The electric flux through a surface is
+\[
+\boxed {
+    \Phi_{\vb{E}} = \int \vb{E} \cdot \dd{\vb{A}}
+    = \int E \cos(\theta_{\vb{E}, \dd{\vb{A}}}) \dd{A}
+}
+\]
+where $\theta_{\vb{E}, \dd{\vb{A}}}$ is the angle between the normal unit vector of the surface and the electric field.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{surface_flux.png}
+    \caption{An electric field applied to a surface produces a flux dependent on the angle $\theta.$}
+    \vspace{-0.5em}
+\end{figure}
+
 The electric flux through a spherical surface of radius $r$ centered on the charge is
 \[
-    \Phi_{\vb{E}} = \oint \vb{E} \cdot \dd{\vb{a}}
+    \Phi_{\vb{E}} = \oint \vb{E} \cdot \dd{\vb{A}}
     = \int \frac{1}{4\pi\epsilon_0} \left( \frac{q}{r^2} \vu{r} \right)
     \cdot \left( r^2 \sin\theta \dd{\theta} \dd{\phi} \, \vu{r} \right).
 \]
@@ -338,7 +365,7 @@ Dividing through $Q$ we have
 \]
 In words, \textit{the potential difference between points $\vb{a}$ and $\vb{b}$ is equal to the work per unit charge required to carry a particle from a to b.} If you set the reference point to infinity, you see that \textit{potential} is potential energy \textit{per unit charge}.
 \[
-    W = Q[V(\vb{r} - V(\infty)] = QV(\vb{r})
+    W = Q[V(\vb{r}) - V(\infty)] = QV(\vb{r})
 \]
 
 \hrulefill
@@ -359,7 +386,7 @@ In an insulator, each electron is on a short leash, attached to a particular ato
 
 	\item $\rho = 0$ \textbf{inside a conductor}. This follows from the differential form of \textbf{Gauss' law},
 	\[
-	\nabla \cdot \vb{E} = \frac{\rho}{\epsilon_0}.
+    	\nabla \cdot \vb{E} = \frac{\rho}{\epsilon_0}
 	\]
 	If $\vb{E}=0$, then $\rho=0$. There is still charge present, but the \textit{net} volume charge density is zero.
 
@@ -394,7 +421,7 @@ As a result, no electric field from the internal charge leaks outside the conduc
 \subsubsection{Surface Charge}
 Since charge cannot exist in the bulk of a conductor, any excess charge must reside on the surface. We describe this using the \textbf{surface charge density}
 \[
-\sigma = \frac{dq}{dA}.
+    \sigma = \frac{dq}{dA}
 \]
 
 Just outside the surface of a conductor, the electric field has two important properties:
@@ -404,18 +431,20 @@ Just outside the surface of a conductor, the electric field has two important pr
 
 	\item \textbf{The magnitude of the electric field just outside the surface is}
 	\[
-	E = \frac{\sigma}{\epsilon_0}.
+    	E = \frac{\sigma}{\epsilon_0}
 	\]
 \end{enumerate}
 
 This result follows directly from \textbf{Gauss’ law}. Consider a thin cylindrical Gaussian ``pillbox'' that straddles the surface of the conductor. The electric field inside the conductor is zero, and the field is perpendicular to the surface, so there is no flux through the curved side of the pillbox. Gauss’ law gives
 \[
-\oint \vb{E}\cdot d\vb{A} = EA = \frac{q_{\text{enc}}}{\epsilon_0}
-= \frac{\sigma A}{\epsilon_0}.
+    \oint \vb{E}\cdot d\vb{A} = EA = \frac{q_{\text{enc}}}{\epsilon_0}
+    = \frac{\sigma A}{\epsilon_0}
 \]
 Canceling the area $A$ yields
 \[
-E = \frac{\sigma}{\epsilon_0}.
+\boxed{
+    E = \frac{\sigma}{\epsilon_0}
+}
 \]
 
 Thus, the surface charge density directly determines the strength of the electric field just outside a conductor.
